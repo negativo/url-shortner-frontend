@@ -1,5 +1,5 @@
 import React from 'react';
-
+require('../styles/Topbar.less');
 const Topbar = ({title,subtitle}) => (
     <div className="ShortTopbar" >
         <span className="ShortTitle">{title}</span>

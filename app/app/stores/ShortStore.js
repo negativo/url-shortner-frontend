@@ -73,7 +73,7 @@ class ShortStore {
         }
         axios.post(
             Config.proxyUrl + '/shorten', {
-                url: link,
+                url: link
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,7 +81,6 @@ class ShortStore {
             }
         ).then(response => {
             let shortcode = response.data.shortcode;
-
             axios.get(Config.proxyUrl + '/' + shortcode + '/stats')
             .then(response => {
                 if(response.data) {

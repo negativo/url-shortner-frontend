@@ -10,7 +10,6 @@ import ShortStore from './../stores/ShortStore';
 import ShortActions from './../actions/ShortActions';
 import connectToStores from 'alt/utils/connectToStores';
 
-require('./../styles/App.less');
 
 class Short extends Component {
 
