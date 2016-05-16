@@ -30,6 +30,12 @@ Run the React app
 npm run watch
 ```
 
+then go to:
+
+```
+http://localhost:8080
+```
+
 By default Webpack runs local server on localhost:8080, you can change this config by adding --host yourip --port yourport within `package.json`:
 
  ```
