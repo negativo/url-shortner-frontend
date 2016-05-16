@@ -40,7 +40,7 @@ class ShortHistory extends Component {
                 </thead>
                 <ReactCSSTransitionGroup transitionName="fade" component="tbody" transitionEnterTimeout={800} transitionLeaveTimeout={800}>
                 {links.map((link, index) => {
-                    return <ShortListElement key={index} link={link} />
+                    return <ShortListElement link={link} />
                 })}
                 </ReactCSSTransitionGroup>
             </table>:''}

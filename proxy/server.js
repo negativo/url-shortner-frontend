@@ -81,15 +81,19 @@ function shorten (req, res) {
         Short
             .shorten(req.body)
             .then(function (response) {
-
-                var response = JSON.parse(response.body);
-                res.send(response);
+                var body = response.body;
+                if(body.indexOf('RequestURITooLarge')==-1) {
+                    var response = JSON.parse(response.body);
+                    res.send(response);
+                }else{
+                    res.send({error:'Uri Too Large'});
+                }
 
             })
             .catch(function (err) {
 
                 console.log(err);
-
+                res.status(500).send({error:err});
             });
     }else{
         res.status(500).send({ error: 'Our monkeys cannot recognize this url!' });

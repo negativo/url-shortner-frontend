@@ -27,7 +27,10 @@ module.exports = function(querystring,https,Q){
                     'Content-Length': Buffer.byteLength(data),
                 }
             }, function(error, response){
-                if(error) {
+                if(error || response.body.indexOf('RequestURITooLarge') != -1) {
+                    if(!error){
+                        error = "Requested Uri Too Large";
+                    }
                     console.log(error);
                     deferred.reject(error);
                 } else {

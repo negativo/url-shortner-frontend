@@ -80,21 +80,19 @@ class ShortStore {
                 }
             }
         ).then(response => {
+
             let shortcode = response.data.shortcode;
+
             axios.get(Config.proxyUrl + '/' + shortcode + '/stats')
-            .then(response => {
-                if(response.data) {
+                .then(response => {
                     this.saveLinks({shortcode: shortcode,
                         url: link,
                         stats:JSON.parse(response.data.body)
                     });
-                }
             });
-
 
         })
         .catch(response=> {
-
             this.setState({
                 error: response.data.error ?
                     response.data.error :

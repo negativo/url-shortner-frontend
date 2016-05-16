@@ -23,7 +23,7 @@ export default class ShortListElement extends Component {
         var link = this.props.link;
         var date = moment(link.stats.lastSeenDate).fromNow();
 
-        return <tr key={this.props.key}>
+        return <tr>
             <td className="linkColumn linkContent">
                 <a href={Config.baseUrl+link.shortcode}  target="_blank">
                     <strong>shooooort.com/
