@@ -73,7 +73,7 @@ class ShortStore {
         }
         axios.post(
             Config.proxyUrl + '/shorten', {
-                url: link,
+                url: lin
             }, {
                 headers: {
                     'Content-Type': 'application/json',
