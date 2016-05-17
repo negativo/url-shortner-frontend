@@ -13,26 +13,31 @@ class ShortStore {
         this.error = null;
     }
 
-    updateLinks(){
+	updateLinks(){
+
         let that = this;
         let newLinks = [];
-        this.links.forEach(function(link,index){
-            axios.get(Config.proxyUrl + '/' + link.shortcode + '/stats')
+
+		this.links.forEach(function(link,index){
+
+			axios.get(Config.proxyUrl + '/' + link.shortcode + '/stats')
                 .then(response => {
 
                     let responseBody = JSON.parse(response.data.body);
 
                     if(!responseBody.error) {
-                        let stats = JSON.parse(response.data.body);
+
                         let newLink = link;
-                        newLink.stats = stats;
+                        newLink.stats = responseBody;
                         newLinks[index] = newLink;
-                        if(newLinks.length == that.links.length){
+
+						if(newLinks.length == that.links.length){
                             that.setState({
                                 links: newLinks
                             });
                             localStorage.setItem('links', JSON.stringify(newLinks));
-                        }
+						}
+
                     }else{
                         that.setState({error: "Updating links, " + responseBody.error + ", clear your history."});
                     }
