@@ -49,7 +49,6 @@ class Shortner extends Component {
     render() {
 
         var error = ShortStore.getState().error ? <span className="red"> {ShortStore.getState().error} </span> : null;
-
         return (
             <div className="Shortner">
                 <form>

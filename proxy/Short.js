@@ -5,7 +5,6 @@ module.exports = function(querystring,https,Q){
     function getUrl(path){
 
         var requested_url = typeof path != 'undefined' ? path : '';
-
         return 'http://'+api_url+'/'+requested_url;
 
     }
@@ -27,11 +26,10 @@ module.exports = function(querystring,https,Q){
                     'Content-Length': Buffer.byteLength(data),
                 }
             }, function(error, response){
-                if(error || response.body.indexOf('RequestURITooLarge') != -1) {
+                if(error || response.body.indexOf('something went wrong') != -1 || response.body.indexOf('RequestURITooLarge') != -1 ) {
                     if(!error){
                         error = "Requested Uri Too Large";
                     }
-                    console.log(error);
                     deferred.reject(error);
                 } else {
                     deferred.resolve(response);

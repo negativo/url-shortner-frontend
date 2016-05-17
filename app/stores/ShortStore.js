@@ -72,10 +72,12 @@ class ShortStore {
     onSubmitLink(link) {
 
         this.setState({error:null});
+
         if(link.indexOf('http://') == -1 && link.indexOf('https://') == -1 ){
             link = 'http://' + link;
 		}
 
+        let shortcode;
         axios.post(
             Config.proxyUrl + '/shorten', {
                 url: link
@@ -85,32 +87,25 @@ class ShortStore {
                 }
             }
         ).then(response => {
-            let shortcode = response.data.shortcode;
+            shortcode = response.data.shortcode;
 
-            axios.get(Config.proxyUrl + '/' + shortcode + '/stats')
-			.then(response => {
-		        if(response.data) {
-	                this.saveLinks({shortcode: shortcode,
-						url: link,
-					    stats:JSON.parse(response.data.body)
-				    });
-				}
-			}).catch(error => {
-				console.log('get stats error:');
-				console.log(error);
-			});
+            return axios.get(Config.proxyUrl + '/' + shortcode + '/stats');
+        })
+		.then(response => {
+		    if(response.data) {
+	            this.saveLinks({shortcode: shortcode,
+					url: link,
+				    stats:JSON.parse(response.data.body)
+			    });
+			}
 		})
-		.catch(response=> {
-			console.log('submit error:');
-			console.log(response);
+		.catch( response => {
             this.setState({
                 error: response.data.error ?
                     response.data.error :
                     'Something wrong, our monkeys are investingating the issue.'
             });
         });
-
-
     }
 
     saveLinks(data) {
