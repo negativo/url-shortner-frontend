@@ -52,15 +52,17 @@ class Shortner extends Component {
 
         return (
             <div className="Shortner">
-                <input ref="url"
-                       onChange={this.onChangeInput.bind(this)}
-                       className="ShortInput left"
-                       placeholder="Paste the link you want to shorten here" />
+                <form>
+                    <input ref="url"
+                           onChange={this.onChangeInput.bind(this)}
+                           className="ShortInput left"
+                           placeholder="Paste the link you want to shorten here" />
 
-                <button onClick={this.onClickShorten.bind(this)}
-                        className={ !this.state.buttonEnabled?"disabled left":"left"}>
-                    Shorten this link
-                </button>
+                    <button onClick={this.onClickShorten.bind(this)}
+                            className={ !this.state.buttonEnabled?"disabled left":"left"}>
+                        Shorten this link
+                    </button>
+                </form>
                 {error}
             </div>
         );
