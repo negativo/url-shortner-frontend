@@ -2,6 +2,7 @@ import React,{ Component} from 'react';
 import ShortStore from './../stores/ShortStore';
 import ShortActions from './../actions/ShortActions';
 import connectToStores from 'alt/utils/connectToStores';
+require('../styles/Shortner.less');
 require('../styles/Button.less');
 
 class Shortner extends Component {

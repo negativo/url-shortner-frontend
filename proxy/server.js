@@ -91,14 +91,12 @@ function shorten (req, res) {
 
             })
             .catch(function (err) {
-
                 console.log(err);
                 res.status(500).send({error:err});
             });
     }else{
-        res.status(500).send({ error: 'Our monkeys cannot recognize this url!' });
+        res.status(500).send({ error: 'url not valid!' });
     }
-
 }
 
 

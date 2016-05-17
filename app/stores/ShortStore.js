@@ -103,7 +103,7 @@ class ShortStore {
             this.setState({
                 error: response.data.error ?
                     response.data.error :
-                    'Something wrong, our monkeys are investingating the issue.'
+                    'Something wrong, our monkeys are investigating the issue.'
             });
         });
     }
